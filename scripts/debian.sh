@@ -9,7 +9,7 @@ sudo chattr +i /etc/shadow
 
 # Remove standard iptables binary to nullify red team scripts that call iptables. Use 'xtables-multi iptables' if needed.
 
-iptLocation="which iptables"
+iptLocation="$(which iptables)"
 rm ${iptLocation}
 
 # Backup current binaries. 
@@ -30,18 +30,18 @@ echo $PATH >> path.orig
 # Move common redteam binaries to new location
 mkdir ~/.new
 
-curlLoc="which curl"
+curlLoc="$(which curl)"
 mv ${curlLoc} ~/.new
 
-wgetLoc="which wget"
+wgetLoc="$(which wget)"
 mv ${wgetLoc} ~/.new
 
-ncLoc="which nc"
+ncLoc="$(which nc)"
 mv ${ncLoc} ~/.new
 
-netcatLoc="which netcat"
+netcatLoc="$(which netcat)"
 mv ${netcatLoc} ~/.new
 
-ncatLoc="which ncat"
+ncatLoc="$(which ncat)"
 mv ${ncatLoc} ~/.new
 
