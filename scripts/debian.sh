@@ -28,20 +28,20 @@ netstat -tulpan >> net.orig
 echo $PATH >> path.orig
 
 # Move common redteam binaries to new location
-mkdir ~/.new
+mkdir ~/.bin
 
 curlLoc="$(which curl)"
-mv ${curlLoc} ~/.new
+mv ${curlLoc} ~/.bin
 
 wgetLoc="$(which wget)"
-mv ${wgetLoc} ~/.new
+mv ${wgetLoc} ~/.bin
 
 ncLoc="$(which nc)"
-mv ${ncLoc} ~/.new
+mv ${ncLoc} ~/.bin
 
 netcatLoc="$(which netcat)"
-mv ${netcatLoc} ~/.new
+mv ${netcatLoc} ~/.bin
 
 ncatLoc="$(which ncat)"
-mv ${ncatLoc} ~/.new
+mv ${ncatLoc} ~/.bin
 
