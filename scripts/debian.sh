@@ -7,14 +7,6 @@ sudo apt-get upgrade
 sudo chattr +i /etc/passwd
 sudo chattr +i /etc/shadow
 
-# Remove standard iptables binary to nullify red team scripts that call iptables. Use 'xtables-multi iptables' if needed.
-
-iptLocation="$(which iptables)"
-rm ${iptLocation}
-
-# Backup current binaries. 
-tar -zcvf bin.tar.gz /bin /sbin /usr/bin /usr/sbin
-
 # Baseline modules.
 lsmod >> lsmod.orig
 
@@ -26,6 +18,11 @@ netstat -tulpan >> net.orig
 
 # Baseline path
 echo $PATH >> path.orig
+
+# Remove standard iptables binary to nullify red team scripts that call iptables. Use 'xtables-multi iptables' if needed.
+
+iptLocation="$(which iptables)"
+rm ${iptLocation}
 
 # Move common redteam binaries to new location
 mkdir ~/.bin
@@ -44,4 +41,7 @@ mv ${netcatLoc} ~/.bin
 
 ncatLoc="$(which ncat)"
 mv ${ncatLoc} ~/.bin
+
+# Backup current binaries. 
+tar -zcvf bin.tar.gz /bin /sbin /usr/bin /usr/sbin
 
