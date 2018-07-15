@@ -19,6 +19,10 @@ netstat -tulpan >> net.orig
 # Baseline path
 echo $PATH >> path.orig
 
+sudo apt-get install -y fail2ban tripwire
+sudo tripwire --init
+sudo tripwire --check
+
 # Remove standard iptables binary to nullify red team scripts that call iptables. Use 'xtables-multi iptables' if needed.
 
 iptLocation="$(which iptables)"
